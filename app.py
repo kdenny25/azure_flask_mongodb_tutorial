@@ -1,12 +1,22 @@
+import os
+
 from flask import Flask, render_template, request, url_for, redirect
 from pymongo import MongoClient, ASCENDING
 from bson.objectid import ObjectId
+import os, sys
 
 import datetime
 
 app = Flask(__name__)
 
-client = MongoClient('localhost', 27017)
+if 'WEBSITE_HOSTNAME' not in os.environ:
+    # local development
+    client = MongoClient('localhost', 27017)
+else:
+    # production
+    print('Loading config.production.')
+    app.config.from_object('project_settings.production')
+    client = MongoClient('conn_str')
 
 db = client.flask_db
 blogs = db.blogs
