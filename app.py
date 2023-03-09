@@ -9,14 +9,19 @@ import datetime
 
 app = Flask(__name__)
 
-if 'WEBSITE_HOSTNAME' not in os.environ:
-    # local development
-    client = MongoClient('localhost', 27017)
-else:
-    # production
-    print('Loading config.production.')
-    app.config.from_object('project_settings.production')
-    client = MongoClient('conn_str')
+print(os.environ)
+
+# if 'WEBSITE_HOSTNAME' not in os.environ:
+#     # local development
+#     client = MongoClient('localhost', 27017)
+# else:
+#     # production
+#     print('Loading config.production.')
+#     conn_str = os.environ.get('AZURE_COSMOS_CONNECTIONSTRING')
+#     client = MongoClient(conn_str)
+
+conn_str = os.environ.get('AZURE_COSMOS_CONNECTIONSTRING')
+client = MongoClient(conn_str)
 
 db = client.flask_db
 blogs = db.blogs
