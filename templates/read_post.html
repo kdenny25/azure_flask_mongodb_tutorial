@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{%  block style %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="card" style="margin: 10px; padding: 5px;">
+        <h3>{{ blog['title'] }}</h3>
+        <small class="text-muted">{{ blog['date'] }}</small>
+        <hr>
+        <p class="mb-0">{{ blog['content'] }}</p>
+    </div>
+
+{% endblock %}
