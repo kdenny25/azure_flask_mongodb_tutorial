@@ -20,7 +20,7 @@ print(os.environ)
 #     conn_str = os.environ.get('AZURE_COSMOS_CONNECTIONSTRING')
 #     client = MongoClient(conn_str)
 
-conn_str = os.environ.get('AZURE_COSMOS_CONNECTIONSTRING')
+conn_str = os.environ.get('COSMOS_CONNECTION_STRING')
 client = MongoClient(conn_str)
 
 db = client.flask_db
