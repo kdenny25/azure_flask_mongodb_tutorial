@@ -10,7 +10,7 @@
           <div class="card-body">
             <h5 class="card-title">{{ blog['title'] }}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{ blog['date'] }}</h6>
-            <p class="card-text">{{ blog['content'][0:200] }}</p>
+            <p class="card-text">{{ blog['content'][0:200] |safe}}</p>
             <form method="POST" action="{{ url_for('read_post', id=blog['_id']) }}">
                 <input type="submit" value="Read More">
             </form>
