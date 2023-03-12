@@ -20,12 +20,14 @@ print(os.environ)
 #     conn_str = os.environ.get('AZURE_COSMOS_CONNECTIONSTRING')
 #     client = MongoClient(conn_str)
 
+# must add new application setting with read-write connection string
+# connection string is copied from the database connection strings menu.
 conn_str = os.environ.get('COSMOS_CONNECTION_STRING')
 client = MongoClient(conn_str)
 
 db = client.flask_db
 blogs = db.blogs
-
+s
 @app.route('/', methods=['GET', 'POST'])
 def index():  # put application's code here
     all_blogs = blogs.find()
